@@ -1,0 +1,29 @@
+.mcq-container, .coding-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.example-box {
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.code-editor {
+    font-family: monospace;
+    resize: vertical;
+}
+
+.form-check {
+    margin: 10px 0;
+}
+
+.card {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar {
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}

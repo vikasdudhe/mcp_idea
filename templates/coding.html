@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="coding-container">
+    <h2>Python Coding Questions</h2>
+    {% for question in questions %}
+    <div class="card mb-4">
+        <div class="card-body">
+            <h3 class="card-title">{{ question.title }}</h3>
+            <p class="card-text">{{ question.description }}</p>
+            <div class="example-box">
+                <h5>Example:</h5>
+                <pre class="bg-light p-2">Input: {{ question.example_input }}
+Output: {{ question.example_output }}</pre>
+            </div>
+            <div class="mt-3">
+                <h5>Your Solution:</h5>
+                <textarea class="form-control code-editor" rows="10" id="solution{{ question.id }}" placeholder="Write your Python code here..."></textarea>
+            </div>
+            <button class="btn btn-primary mt-3" onclick="runCode('{{ question.id }}')">Run Code</button>
+            <div id="result{{ question.id }}" class="mt-3"></div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+function runCode(questionId) {
+    const code = document.getElementById(`solution${questionId}`).value;
+    // In a real implementation, this would send the code to the server for execution
+    alert('In a production environment, this would execute your code and show results. For this mock version, code execution is not implemented.');
+}
+</script>
+{% endblock %}

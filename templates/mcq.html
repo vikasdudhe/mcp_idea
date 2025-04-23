@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="mcq-container">
+    <h2>Multiple Choice Questions</h2>
+    <form id="mcqForm">
+        {% for question in questions %}
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Question {{ question.id }}</h5>
+                <p class="card-text">{{ question.question }}</p>
+                {% for option in question.options %}
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question{{ question.id }}" value="{{ option }}" id="q{{ question.id }}opt{{ loop.index }}">
+                    <label class="form-check-label" for="q{{ question.id }}opt{{ loop.index }}">
+                        {{ option }}
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Submit Answers</button>
+    </form>
+    <div id="results" class="mt-4" style="display: none;">
+        <h3>Results</h3>
+        <p>Score: <span id="score">0</span>/{{ questions|length }}</p>
+    </div>
+</div>
+
+<script>
+document.getElementById('mcqForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    let score = 0;
+    const questionData = JSON.parse('{{ questions|tojson|safe }}');
+    
+    questionData.forEach(question => {
+        const selected = document.querySelector(`input[name="question${question.id}"]:checked`);
+        if (selected && selected.value === question.correct_answer) {
+            score++;
+        }
+    });
+
+    document.getElementById('score').textContent = score;
+    document.getElementById('results').style.display = 'block';
+});
+</script>
+{% endblock %}

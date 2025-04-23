@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="text-center">
+    <h1>Welcome to VikasMock</h1>
+    <p class="lead">Practice for your coding interviews with MCQ and programming questions</p>
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">MCQ Questions</h5>
+                    <p class="card-text">Test your knowledge with 10 multiple choice questions.</p>
+                    <a href="/mcq" class="btn btn-primary">Start MCQ Test</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Coding Questions</h5>
+                    <p class="card-text">Practice with 2 Python coding challenges.</p>
+                    <a href="/coding" class="btn btn-primary">Start Coding</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
